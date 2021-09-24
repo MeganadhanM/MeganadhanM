@@ -11,5 +11,5 @@ jobs:
       uses: Azure/pipelines@v1
       with:
         azure-devops-project-url: https://dev.azure.com/meganadhan/Megatest
-        azure-pipeline-name: 'packagemgmt'
+        azure-pipeline-name: 'Megatest'
         azure-devops-token: aadelkrftqj2lspvczrrswitk4voek67goyl27qx6titoswzc4ua
