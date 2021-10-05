@@ -1,19 +1,15 @@
 on:
-  pull_request:
-    types: [opened, edited]
+
   pull_request_review:
     types: [submitted]
+
 jobs:
   build:
-    if: github.event.review.state == 'approved'
+    if: github.event.review.state == 'approved' && {{ startsWith(github.event.pull_request.head.ref,app/) }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        name: Git-checkout
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
-      - run: |
+
+    - run: |
          git branch 
          git branch -a
          git fetch origin
@@ -24,13 +20,15 @@ jobs:
          prsource=GITHUB_REF
          echo $prsource
          printenv
-        shell: bash
-      - name: Az Pipelines Action
-        uses: ladvivek7/Az_Pipeline@v1
-        with:
+      shell: bash
+      
+    - name: Az Pipelines Action
+      uses: ladvivek7/Az_Pipeline@v1
+      with:
           azure-devops-project-url: https://dev.azure.com/meganadhan/Megatest
           azure-pipeline-name: 'okta-test'
           azure-devops-token: h5kqd4jcdbkneyhejwagocjb7k7cs7xncutuluj5q3clmavgrj7a
           azure-pipeline-variables:  '{"pr_source": "$prsource", "variable2": "$GITHUB_REF"}'
+
        
         
