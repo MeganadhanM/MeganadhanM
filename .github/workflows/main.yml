@@ -3,7 +3,7 @@ on:
      types: [submitted]
 jobs:
   build:
-    if: ${{ startsWith( github.event.pull_request.head.ref, 'main') && github.event.review.state == 'approved' }}
+    if: ${{ startsWith( github.event.pull_request.head.ref, 'test') && github.event.review.state == 'approved' }}
     runs-on: ubuntu-latest
     steps:
 
@@ -23,6 +23,6 @@ jobs:
           azure-devops-project-url: https://dev.azure.com/meganadhan/Megatest
           azure-pipeline-name: 'okta-test'
           azure-devops-token: h5kqd4jcdbkneyhejwagocjb7k7cs7xncutuluj5q3clmavgrj7a
-          azure-pipeline-variables:  '{"pr_source": "$prsource", "variable2": "$GITHUB_REF"}'
+          azure-pipeline-variables:  '{"Is_app": "true", "source_branch": "test-devops"}'
        
         
