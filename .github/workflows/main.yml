@@ -7,6 +7,11 @@ jobs:
     if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
+    - run: |
+       echo $GITHUB_REF
+       prsource=GITHUB_REF
+       echo prsource
+      shell: bash
     - name: Az Pipelines Action
       uses: ladvivek7/Az_Pipeline@v1
       with:
