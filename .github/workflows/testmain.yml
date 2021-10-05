@@ -23,3 +23,5 @@ jobs:
           azure-pipeline-name: 'Azure-func-app-test'
           azure-devops-token: h5kqd4jcdbkneyhejwagocjb7k7cs7xncutuluj5q3clmavgrj7a
           azure-pipeline-variables:  '{"Is_app": "true", "System.PullRequest.SourceBranch": "app/*"}'
+          
+          
