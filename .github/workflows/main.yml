@@ -11,6 +11,7 @@ jobs:
        echo $GITHUB_REF
        prsource=GITHUB_REF
        echo $prsource
+       printenv
       shell: bash
     - name: Az Pipelines Action
       uses: ladvivek7/Az_Pipeline@v1
