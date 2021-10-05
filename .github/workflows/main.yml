@@ -1,11 +1,9 @@
 on:
-  pull_request:
-    types: [opened, edited]
-  pull_request_review:
-    types: [submitted]
+    pull_request_review:
+     types: [submitted]
 jobs:
   build:
-    if: github.event.review.state == 'approved'
+    if: ${{ github.event.review.state == 'approved' &&  startsWith(github.event.pull_request.head.ref, 'apps/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
