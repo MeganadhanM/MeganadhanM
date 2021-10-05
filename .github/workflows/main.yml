@@ -1,6 +1,8 @@
 on:
   pull_request:
     types: [opened, edited]
+  pull_request_review:
+    types: [submitted]
 jobs:
   build:
     if: github.event.review.state == 'approved'
