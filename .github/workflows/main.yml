@@ -10,6 +10,7 @@ jobs:
     - run: |
        echo $GITHUB_REF
        echo $GITHUB_HEAD_REF
+       
        prsource=GITHUB_REF
        echo $prsource
        printenv
