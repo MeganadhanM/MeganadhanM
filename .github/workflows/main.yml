@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Azure Pipelines Action
-      uses: Azure/pipelines@v1
+      uses: alexrster/pipelines@v2
       with:
         azure-devops-project-url: https://dev.azure.com/meganadhan/Megatest
         azure-pipeline-name: 'okta-test'
