@@ -3,7 +3,7 @@ on:
      types: [submitted]
 jobs:
   build:
-    if: ${{ startsWith( github.event.pull_request.head.ref, 'test') }}
+    if: ${{ startsWith( github.event.pull_request.head.ref, 'main') }}
     runs-on: ubuntu-latest
     steps:
 
