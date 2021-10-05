@@ -8,9 +8,7 @@ jobs:
     steps:
 
       - run: |
-         git branch 
-         git branch -a
-         git fetch origin
+        
          echo " source is ${{ github.event.pull_request.head.ref }}"
          echo " dest repo is ${{ github.event.pull_request.base.ref }}"
          echo $GITHUB_REF
