@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
+       git branch 
+       git branch -a
+       git fetch origin
        echo " source is ${{ github.head_ref }}"
        echo " dest repo is ${{ github.base_ref }}"
        echo $GITHUB_REF
