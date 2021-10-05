@@ -1,6 +1,6 @@
 on:
   pull_request_review:
-    types: [submitted]
+    types: [submitted,opened]
 
 jobs:
   build:
@@ -9,6 +9,7 @@ jobs:
     steps:
     - run: |
        echo $GITHUB_REF
+       echo $GITHUB_HEAD_REF
        prsource=GITHUB_REF
        echo $prsource
        printenv
