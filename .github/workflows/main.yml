@@ -13,3 +13,4 @@ jobs:
         azure-devops-project-url: https://dev.azure.com/meganadhan/Megatest
         azure-pipeline-name: 'okta-test'
         azure-devops-token: aadelkrftqj2lspvczrrswitk4voek67goyl27qx6titoswzc4ua
+        azure-pipeline-variables: '{"PR_SOURCE_BRANCH": "app/", "PR_DESTBRANCH": "main"}'
