@@ -1,6 +1,6 @@
 on:
   pull_request_review:
-    types: [submitted,opened]
+    types: [submitted]
 
 jobs:
   build:
@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
+       echo " source is ${{ github.head_ref }}"
+       echo " dest repo is ${{ github.base_ref }}"
        echo $GITHUB_REF
        echo $GITHUB_HEAD_REF
        prsource=GITHUB_REF
