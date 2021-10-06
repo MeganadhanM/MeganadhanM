@@ -10,10 +10,10 @@ jobs:
       uses: Azure/pipelines@v1
       with:
         azure-devops-project-url: https://dev.azure.com/meganadhan/Megatest
-        azure-pipeline-name: 'Azure-func-app-test'
+        azure-pipeline-name: 'okta-test'
         azure-devops-token: aadelkrftqj2lspvczrrswitk4voek67goyl27qx6titoswzc4ua
 
-      - run: |
+    - run: |
         
          echo " source is ${{ github.event.pull_request.head.ref }}"
          echo " dest repo is ${{ github.event.pull_request.base.ref }}"
@@ -22,10 +22,10 @@ jobs:
          prsource=GITHUB_REF
          echo $prsource
          printenv
-        shell: bash
-      - name: Az Pipelines Action
-        uses: ladvivek7/Az_Pipeline@v1
-        with:
+         
+    - name: Az Pipelines Action
+      uses: ladvivek7/Az_Pipeline@v1
+      with:
           azure-devops-project-url: https://dev.azure.com/meganadhan/Megatest
           azure-pipeline-name: 'Azure-func-app-test'
           azure-devops-token: h5kqd4jcdbkneyhejwagocjb7k7cs7xncutuluj5q3clmavgrj7a
