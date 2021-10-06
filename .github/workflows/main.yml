@@ -6,23 +6,20 @@ jobs:
     if: ${{ startsWith( github.event.pull_request.head.ref, 'test') && github.event.review.state == 'approved' }}
     runs-on: ubuntu-latest
     steps:
-
-      - run: |
+    
+    - run: |
         
          echo " source is ${{ github.event.pull_request.head.ref }}"
          echo " dest repo is ${{ github.event.pull_request.base.ref }}"
-         echo $GITHUB_REF
-         echo $GITHUB_HEAD_REF
-         prsource=GITHUB_REF
-         echo $prsource
+        
          printenv
-        shell: bash
-      - name: Az Pipelines Action
-        uses: ladvivek7/Az_Pipeline@v1
-        with:
-          azure-devops-project-url: https://dev.azure.com/meganadhan/Megatest
-          azure-pipeline-name: 'okta-test'
-          azure-devops-token: h5kqd4jcdbkneyhejwagocjb7k7cs7xncutuluj5q3clmavgrj7a
+         
+    - name: Az Pipelines Action
+      uses: ladvivek7/Az_Pipeline@v1
+      with:
+          azure-devops-project-url: ''
+          azure-pipeline-name: ''
+          azure-devops-token: ''
           azure-pipeline-variables:  '{"Is_app": "true", "System.PullRequest.SourceBranch": "${{ github.event.pull_request.head.ref }}"}'
        
         
