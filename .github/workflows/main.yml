@@ -17,9 +17,9 @@ jobs:
     - name: Az Pipelines Action
       uses: ladvivek7/Az_Pipeline@v1
       with:
-          azure-devops-project-url: 'https://dev.azure.com/meganadhan/Mega%20nadhan'
-          azure-pipeline-name: 'okta-test'
-          azure-devops-token: 'ghxsoa5lhsfh676yplgjnk2vko3pmogprhh4gurpswdoikzhrvza'
+          azure-devops-project-url: 'https://dev.azure.com/ovearup/Total%20Design%20Automation'
+          azure-pipeline-name: 'TDA-apps-UAT-on-PR'
+          azure-devops-token: '2kasuzjoo2ce57axvezh5i2phqgywtz3oleg6rl2jfsmgoo3gniq'
           azure-pipeline-variables:  '{"Is_app": "true", "System.PullRequest.SourceBranch": "${{ github.event.pull_request.head.ref }}"}'
        
         
