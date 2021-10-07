@@ -31,18 +31,19 @@ stages:
           echo  is triggered by appd5 branch  ? $(isappd5) 
 
 - stage: build
-  variables:
-    - name: tda-ui-redirect
-      value: "https://tdatempdevstatichosting.z7.web.core.windows.net"
+      
   jobs:
     - job: build
+      variables:
+       - name: tda-ui-redirect
+         value: "https://tdatempdevstatichosting.z7.web.core.windows.net"
       steps:
         - script: |
             prsource=$(System.PullRequest.SourceBranch)
             echo prsource is $prsource
             slot_name=$(echo $prsource | cut -d "/" -f1 | cut -c 4-)
             echo slotname is $slot_name
-
+            
             echo  $(tda-ui-redirect) 
 
             echo '##vso[task.setvariable variable=tda-ui-redirect]"https://tdatempdevstatichosting.z7.web.core.windows.net/test5/index.html"'
