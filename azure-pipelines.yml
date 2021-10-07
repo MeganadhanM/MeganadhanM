@@ -45,10 +45,11 @@ stages:
             echo slotname is $slot_name
             echo  $(tda-ui-redirect) 
             echo '##vso[task.setvariable variable=tda-ui-redirect]https://tdatempdevstatichosting.z7.web.core.windows.net/test5/index.html'
-
-            echo url is $(tda-ui-redirect)
-            echo url is ${tda-ui-redirect}
+          displayName: set var
             
-            printenv
+        - script: 
+              echo url is $(tda-ui-redirect)
+          displayName: get var
+              
 
 
