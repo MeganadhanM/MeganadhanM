@@ -49,6 +49,7 @@ stages:
             
         - script: 
               echo url is $(tda-ui-redirect)
+              
           displayName: get var
               
 
