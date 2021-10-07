@@ -41,7 +41,7 @@ stages:
             prsource=$(System.PullRequest.SourceBranch)
             echo prsource is $prsource
             slot_name=$(echo $prsource | cut -d "/" -f1 | cut -c 4-)
-            echo slotname is $slot_name
-            echo '##vso[task.setvariable variable=tda-ui-redirect]https://tdatempdevstatichosting.z7.web.core.windows.net/d1'
+            echo  $(tda-ui-redirect) 
+            echo '##vso[task.setvariable variable=tda-ui-redirect]https://tdatempdevstatichosting.z7.web.core.windows.net/test5/index.html'
             echo url is $(tda-ui-redirect)
 
