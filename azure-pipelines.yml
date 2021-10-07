@@ -46,18 +46,29 @@ stages:
             if [[ ( $slot_name == "d1" ) ]]
             then
             echo "##vso[task.setvariable variable=tda-ui-redirect]https://tdatempdevstatichosting.z7.web.core.windows.net/'$slot_name'"
+            echo "##vso[task.setvariable variable=PUBLIC_URL]https://tdatempdevstatichosting.z7.web.core.windows.net/'$slot_name'"
+            echo "##vso[task.setvariable variable=slot_name]'$slot_name'"
             elif [[ ( $slot_name == "d2" ) ]]
             then
             echo "##vso[task.setvariable variable=tda-ui-redirect]https://tdatempdevstatichosting.z7.web.core.windows.net/'$slot_name'"
+            echo "##vso[task.setvariable variable=PUBLIC_URL]https://tdatempdevstatichosting.z7.web.core.windows.net/'$slot_name'"
+            echo "##vso[task.setvariable variable=slot_name]'$slot_name'"
             elif [[ ( $slot_name == "d3" ) ]]
             then
             echo "##vso[task.setvariable variable=tda-ui-redirect]https://tdatempdevstatichosting.z7.web.core.windows.net/'$slot_name'"
+            echo "##vso[task.setvariable variable=PUBLIC_URL]https://tdatempdevstatichosting.z7.web.core.windows.net/'$slot_name'"
+            echo "##vso[task.setvariable variable=slot_name]'$slot_name'"
+            echo "##vso[task.setvariable variable=slot_name]'$slot_name'"
             elif [[ ( $slot_name == "d4" ) ]]
             then
             echo "##vso[task.setvariable variable=tda-ui-redirect]https://tdatempdevstatichosting.z7.web.core.windows.net/'$slot_name'"
+            echo "##vso[task.setvariable variable=PUBLIC_URL]https://tdatempdevstatichosting.z7.web.core.windows.net/'$slot_name'"
+            echo "##vso[task.setvariable variable=slot_name]'$slot_name'"
             elif [[ ( $slot_name == "d5" ) ]]
             then
             echo "##vso[task.setvariable variable=tda-ui-redirect]https://tdatempdevstatichosting.z7.web.core.windows.net/'$slot_name'"
+            echo "##vso[task.setvariable variable=PUBLIC_URL]https://tdatempdevstatichosting.z7.web.core.windows.net/'$slot_name'"
+            echo "##vso[task.setvariable variable=slot_name]'$slot_name'"
             else
             echo its not matching with slot
             fi
@@ -67,6 +78,7 @@ stages:
         - script: 
               echo url is $(tda-ui-redirect)
               echo slotname is $(slot_name)
+              echo public url is $(PUBLIC_URL)
 
           displayName: get var
               
