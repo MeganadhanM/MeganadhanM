@@ -32,9 +32,13 @@ stages:
 
 - stage: build
   variables:
-    - group: tda-dev-vg
+    - name: tda-ui-redirect
+      value: https://tdatempdevstatichosting.z7.web.core.windows.net
   jobs:
     - job: build
       steps:
         - script: |
             pr_source=$(System.PullRequest.SourceBranch)
+            slot_name=$(echo $pr_source | cut -d "/" -f1 | cut -c 4-)
+            echo '##vso[task.setvariable variable=tda-ui-redirect]https://tdatempdevstatichosting.z7.web.core.windows.net/$slot_name'
+            echo $tda-ui-redirect
