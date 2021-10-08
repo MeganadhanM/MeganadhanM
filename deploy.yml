@@ -41,22 +41,22 @@ jobs:
                   echo  ${{ parameters.fld }}
                                     
                 displayName: 'Show deploy env vars'
-              - task: AzureCLI@2
-                inputs:
-                  azureSubscription: '${{ parameters.sub }}'
-                  scriptType: 'bash'
-                  scriptLocation: 'inlineScript'
-                  inlineScript: 'az storage blob delete-batch -s \$web --account-name ${{ parameters.storageaccount }} --pattern ${{ parameters.dir }}'
-              - task: DownloadBuildArtifacts@0
-                inputs:
-                  buildType: 'current'
-                  downloadType: 'single'
-                  artifactName: 'ui'
-                  downloadPath: '$(System.ArtifactsDirectory)/'
-              - task: AzureFileCopy@3
-                inputs:
-                  SourcePath: '$(System.ArtifactsDirectory)/ui/'
-                  azureSubscription: '${{ parameters.sub }}'
-                  Destination: 'AzureBlob'
-                  storage: '${{ parameters.storageaccount }}'
-                  ContainerName: '${{ parameters.fld }}'
+#               - task: AzureCLI@2
+#                 inputs:
+#                   azureSubscription: '${{ parameters.sub }}'
+#                   scriptType: 'bash'
+#                   scriptLocation: 'inlineScript'
+#                   inlineScript: 'az storage blob delete-batch -s \$web --account-name ${{ parameters.storageaccount }} --pattern ${{ parameters.dir }}'
+#               - task: DownloadBuildArtifacts@0
+#                 inputs:
+#                   buildType: 'current'
+#                   downloadType: 'single'
+#                   artifactName: 'ui'
+#                   downloadPath: '$(System.ArtifactsDirectory)/'
+#               - task: AzureFileCopy@3
+#                 inputs:
+#                   SourcePath: '$(System.ArtifactsDirectory)/ui/'
+#                   azureSubscription: '${{ parameters.sub }}'
+#                   Destination: 'AzureBlob'
+#                   storage: '${{ parameters.storageaccount }}'
+#                   ContainerName: '${{ parameters.fld }}'
