@@ -1,47 +1,21 @@
 pr:
-- demo/test5
+- main
 
 pool:
   vmimage: "ubuntu-latest"
 
-variables:
-
- isappd1: $[ startsWith(variables['System.PullRequest.SourceBranch'], 'appd1/') ]
- isappd2: $[ startsWith(variables['System.PullRequest.SourceBranch'], 'appd2/') ]
- isappd3: $[ startsWith(variables['System.PullRequest.SourceBranch'], 'appd3/') ]
- isappd4: $[ startsWith(variables['System.PullRequest.SourceBranch'], 'appd4/') ]
- isappd5: $[ startsWith(variables['System.PullRequest.SourceBranch'], 'appd5/') ]
-# isplatform: $[ startsWith(variables['System.PullRequest.SourceBranch'], 'platform') ]
 stages:
-- stage: CHECK_TRIGGER
   
+- stage: DEPLOY_TO_APPD2
+  condition: eq(variables.isappd2, 'true')
+  dependsOn: BUILD
   jobs:
-  - job: checktrigger
-    steps:
-      - script: |
-          
-          echo  is triggered by appd1 branch  ? $(isappd1) 
-          echo  is triggered by appd2 branch  ? $(isappd2) 
-          echo  is triggered by appd3 branch  ? $(isappd3) 
-          echo  is triggered by appd4 branch  ? $(isappd4) 
-          echo  is triggered by appd5 branch  ? $(isappd5) 
-          echo app is $(tda-ui-tenant-id) >> var.txt
-          echo app is $REACT_APP_TENANT >> var.txt
-             
-        displayName: check vars
-        env:
-          REACT_APP_TENANT: $(tda-ui-tenant-id)
-         
-      
-
-      - task: CopyFiles@2
-        inputs:
-          Contents: var.txt
-          targetFolder: '$(Build.ArtifactStagingDirectory)'
-
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'drop'
-          publishLocation: 'Container'
-          
+    - template: deploy.yml
+      parameters:
+        storageaccount: 'tdatempdevstatichosting'
+        sub: 'arup-it-dev'
+        rg: 'arup-tda-dev-rg'
+        env: 'dev'
+        fld: '$web/d1'
+        dir: 'd1/*'
+  
