@@ -1,6 +1,10 @@
 pr:
 - main
 
+variables:
+
+ isappd1: $[ startsWith(variables['System.PullRequest.SourceBranch'], 'appd1/') ]
+ 
 pool:
   vmimage: "ubuntu-latest"
 
