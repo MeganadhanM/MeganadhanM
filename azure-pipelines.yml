@@ -7,7 +7,7 @@ pool:
 stages:
   
 - stage: DEPLOY_TO_APPD2
-  condition: eq(variables.isappd2, 'true')
+  condition: eq(variables.isappd1, 'true')
   jobs:
     - template: deploy.yml
       parameters:
