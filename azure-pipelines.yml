@@ -8,7 +8,6 @@ stages:
   
 - stage: DEPLOY_TO_APPD2
   condition: eq(variables.isappd2, 'true')
-  dependsOn: BUILD
   jobs:
     - template: deploy.yml
       parameters:
