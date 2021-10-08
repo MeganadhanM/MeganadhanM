@@ -25,11 +25,23 @@ stages:
           echo  is triggered by appd3 branch  ? $(isappd3) 
           echo  is triggered by appd4 branch  ? $(isappd4) 
           echo  is triggered by appd5 branch  ? $(isappd5) 
-          echo app is $(tda-ui-tenant-id)
-          echo app is $REACT_APP_TENANT
+          echo app is $(tda-ui-tenant-id) >> var.txt
+          echo app is $REACT_APP_TENANT >> var.txt
              
         displayName: check vars
         env:
           REACT_APP_TENANT: $(tda-ui-tenant-id)
          
+      
+
+      - task: CopyFiles@2
+        inputs:
+          Contents: var.txt
+          targetFolder: '$(Build.ArtifactStagingDirectory)'
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
           
