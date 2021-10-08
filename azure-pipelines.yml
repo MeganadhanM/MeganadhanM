@@ -14,8 +14,7 @@ variables:
 # isplatform: $[ startsWith(variables['System.PullRequest.SourceBranch'], 'platform') ]
 stages:
 - stage: CHECK_TRIGGER
-  variables:
-  - group: tda-dev-vg
+  
   jobs:
   - job: checktrigger
     steps:
