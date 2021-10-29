@@ -1,6 +1,17 @@
 pr:
 - main
 
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+ branches: 
+  include:
+    - main
+   
+
 variables:
 
  isappd1: $[ startsWith(variables['System.PullRequest.SourceBranch'], 'appd1/') ]
@@ -10,15 +21,19 @@ pool:
 
 stages:
   
-- stage: DEPLOY_TO_APPD2
-  condition: eq(variables.isappd1, 'true')
-  jobs:
-    - template: deploy.yml
-      parameters:
-        storageaccount: 'tdatempdevstatichosting'
-        sub: 'arup-it-dev'
-        rg: 'arup-tda-dev-rg'
-        env: 'dev'
-        fld: '$web/d1'
-        dir: 'd1/*'
+- stage: build
   
+  jobs:
+    - job: build
+      steps:
+        - script: |
+            echo "its working on build"
+
+- stage: deploy
+  condition: ne(variables['Build.Reason'], 'PullRequest')
+  jobs:
+    - job: deploy
+      steps:
+        - script: |
+            echo "its working on deploy"           
+
