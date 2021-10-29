@@ -31,10 +31,18 @@ stages:
           echo  is triggered by appd5 branch  ? $(isappd5) 
 
 - stage: build
-  variables:
-    - group: tda-dev-vg
+  
   jobs:
     - job: build
       steps:
         - script: |
             pr_source=$(System.PullRequest.SourceBranch)
+
+- stage: deploy
+  condition: ne(variables['Build.Reason'], 'PullRequest')
+  
+  jobs:
+    - job: deploy
+      steps:
+        - script: |
+            pr_source=$(System.PullRequest.SourceBranch)            
