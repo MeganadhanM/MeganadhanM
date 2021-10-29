@@ -43,7 +43,6 @@ stages:
 
 - stage: deploy
   condition: ne(variables['Build.Reason'], 'PullRequest')
-  
   jobs:
     - job: deploy
       steps:
