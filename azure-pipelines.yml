@@ -35,5 +35,5 @@ stages:
     - job: deploy
       steps:
         - script: |
-            echo $(Build.Reason)     
+            echo "$(Build.Reason)
 
