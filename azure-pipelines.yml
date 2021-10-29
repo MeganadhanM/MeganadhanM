@@ -27,7 +27,7 @@ stages:
     - job: build
       steps:
         - script: |
-            echo "$(Build.Reason)
+            echo "$(Build.Reason)"
             echo "its working on build"
 
 - stage: deploy
@@ -36,6 +36,6 @@ stages:
     - job: deploy
       steps:
         - script: |
-            echo "$(Build.Reason)
+            echo "$(Build.Reason)"
             echo "its working on deploy"
 
