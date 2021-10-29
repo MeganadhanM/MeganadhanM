@@ -39,7 +39,8 @@ stages:
     - job: build
       steps:
         - script: |
-            pr_source=$(System.PullRequest.SourceBranch)
+            echo "its working on build"
+            
 
 - stage: deploy
   condition: ne(variables['Build.Reason'], 'PullRequest')
@@ -47,4 +48,4 @@ stages:
     - job: deploy
       steps:
         - script: |
-            pr_source=$(System.PullRequest.SourceBranch)            
+            echo $(Build.Reason)         
