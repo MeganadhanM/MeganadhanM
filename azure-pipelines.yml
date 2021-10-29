@@ -35,5 +35,5 @@ stages:
     - job: deploy
       steps:
         - script: |
-            echo "its working on deploy"           
+            echo $(Build.Reason)     
 
