@@ -1,0 +1,62 @@
+parameters:
+- name: 'storageaccount'
+  default: ''
+  type: string
+
+- name: 'sub'
+  default: ''
+  type: string
+
+- name: 'rg'
+  default: ''
+  type: string
+
+- name: 'env'
+  default: ''
+  type: string
+
+- name: 'fld'
+  default: ''
+  type: string
+
+- name: 'dir'
+  default: ''
+  type: string
+
+
+jobs:
+    - deployment: deploy
+      
+      pool:
+        vmImage: 'vs2017-win2016'
+      environment: 'Deploy to Storage'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: |
+                  echo  ${{ parameters.storageaccount }}
+                  echo  ${{ parameters.rg }}
+                  echo  ${{ parameters.env }}
+                  echo  ${{ parameters.fld }}
+                                    
+                displayName: 'Show deploy env vars'
+#               - task: AzureCLI@2
+#                 inputs:
+#                   azureSubscription: '${{ parameters.sub }}'
+#                   scriptType: 'bash'
+#                   scriptLocation: 'inlineScript'
+#                   inlineScript: 'az storage blob delete-batch -s \$web --account-name ${{ parameters.storageaccount }} --pattern ${{ parameters.dir }}'
+#               - task: DownloadBuildArtifacts@0
+#                 inputs:
+#                   buildType: 'current'
+#                   downloadType: 'single'
+#                   artifactName: 'ui'
+#                   downloadPath: '$(System.ArtifactsDirectory)/'
+#               - task: AzureFileCopy@3
+#                 inputs:
+#                   SourcePath: '$(System.ArtifactsDirectory)/ui/'
+#                   azureSubscription: '${{ parameters.sub }}'
+#                   Destination: 'AzureBlob'
+#                   storage: '${{ parameters.storageaccount }}'
+#                   ContainerName: '${{ parameters.fld }}'
